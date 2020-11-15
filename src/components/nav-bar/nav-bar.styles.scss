@@ -1,0 +1,33 @@
+.navbar-container {
+  width: 100%;
+  // border: 1px solid red;
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-shadow: 0 -10px 45px rgba($color: #9f9f9f, $alpha: .8);
+  position: fixed;
+  z-index: 800;
+  background-color: white;
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: #99503d;
+    font-weight: 600;
+
+    img {
+      width: 40px;
+      margin-right: 10px;
+    }
+  }
+
+  .my-acc {
+    color: #b35f49;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
