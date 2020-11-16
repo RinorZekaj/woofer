@@ -47,18 +47,20 @@ function AuthForm({ authMode, history }) {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
+    <div className='auth-form-container'>
+      <form onSubmit={submitHandler} className='auth-form-main'>
         <input
           type="email"
           placeholder="Email"
           value={email}
+          className='input'
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
+          className='input'
           onChange={(e) => setPassword(e.target.value)}
         />
         {authMode === "signup" && (
@@ -66,22 +68,24 @@ function AuthForm({ authMode, history }) {
             type="password"
             placeholder="Confirm Password"
             value={confirmPassword}
+            className='input'
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         )}
         <input
           type="submit"
+          className='submit-button'
           value={authMode === "signup" ? "SIGN UP" : "LOG IN"}
         />
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className='error'>{error}</p>}
       {authMode === "signup" ? (
         <div>
-          Already have an account?<NavLink to="login">Sign in</NavLink>
+          Already have an account?<NavLink className='nav-link' to="login">Sign in</NavLink>
         </div>
       ) : (
         <div>
-          Dont have an account <NavLink to="signup">Sign up</NavLink>
+          Dont have an account <NavLink className='nav-link' to="signup">Sign up</NavLink>
         </div>
       )}
     </div>

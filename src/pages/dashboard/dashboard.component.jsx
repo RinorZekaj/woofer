@@ -7,17 +7,20 @@ import Dog from '../../assets/doggo.png'
 import Paw from '../../assets/pawprint.svg'
 
 import "./dashboard.styles.scss";
+import Spinner from "../../components/spinner/spinner.component";
 
 function DashboardPage(props) {
   const [currentUser, setCurrentUser] = useState(null);
   const [woofs, setWoofs] = useState([]);
   const [woof, setWoof] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false)
 
   let unsubcribeFromAuth = null;
 
   useEffect(() => {
     unsubcribeFromAuth = auth.onAuthStateChanged(async (user) => {
+      setLoading(true)
       if (user) {
         const { email, uid } = user;
         setCurrentUser({
@@ -26,13 +29,15 @@ function DashboardPage(props) {
         });
 
         firestore.collection("woofs").onSnapshot(async (res) => {
+          setLoading(true)
           const allWoofs = res.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
-          }));
+          }))
           console.log(allWoofs);
           setWoofs(allWoofs);
-        });
+          setLoading(false)
+        })
       } else {
         props.history.push("/login");
       }
@@ -73,6 +78,7 @@ function DashboardPage(props) {
           <img src={Dog} alt='doggo' />
         </div>
         <div className="woofs-holder">
+          {loading && <Spinner />}
           <WoofsOverview woofs={woofs} currentUser={currentUser} />
         </div>
         <div className="form-holder">
