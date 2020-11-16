@@ -11,7 +11,6 @@ import "./dashboard.styles.scss";
 function DashboardPage(props) {
   const [currentUser, setCurrentUser] = useState(null);
   const [woofs, setWoofs] = useState([]);
-  const [newWoofFormVisible, setNewWoofFormVisible] = useState(false);
   const [woof, setWoof] = useState("");
   const [error, setError] = useState(null);
 
@@ -74,7 +73,7 @@ function DashboardPage(props) {
           <img src={Dog} alt='doggo' />
         </div>
         <div className="woofs-holder">
-          <WoofsOverview woofs={woofs} />
+          <WoofsOverview woofs={woofs} currentUser={currentUser} />
         </div>
         <div className="form-holder">
           <input
@@ -87,7 +86,6 @@ function DashboardPage(props) {
           <img src={Paw} alt='paw' /> 
         </div>
       </div>
-      <button onClick={handleSignOut}>Sign Out</button>
     </div>
   );
 }

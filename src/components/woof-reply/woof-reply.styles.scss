@@ -1,0 +1,33 @@
+.woof-reply {
+  width: 85%;
+  margin-left: 15%;
+  border-bottom: 1px solid #efefef;
+  border-top: 1px solid #efefef;
+  margin-bottom: 15px; 
+
+  .reply-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .user-profile {
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      background-color: #ecb0a1;
+      color: white;
+    }
+  }
+
+  .bark {
+    width: 100%;
+    background-color:  #ecb0a1;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
